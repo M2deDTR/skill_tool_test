@@ -1,0 +1,3 @@
+C:/Users/tangz/Downloads/tool test/build/CMakeFiles/skill_detector.dir
+C:/Users/tangz/Downloads/tool test/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/tangz/Downloads/tool test/build/CMakeFiles/ZERO_CHECK.dir

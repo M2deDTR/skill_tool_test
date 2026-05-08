@@ -1,0 +1,3 @@
+set(__QT_DEPLOY_TARGET_EndField_Skill_Inspector_FILE C:/Users/tangz/Desktop/EndField_Skill_Inspector/build/Desktop_Qt_6_10_2_MSVC2022_64bit-Debug/EndField_Skill_Inspector.exe)
+set(__QT_DEPLOY_TARGET_EndField_Skill_Inspector_TYPE EXECUTABLE)
+set(__QT_DEPLOY_TARGET_EndField_Skill_Inspector_RUNTIME_DLLS C:/Qt/6.10.2/msvc2022_64/bin/Qt6MultimediaWidgetsd.dll;C:/Qt/6.10.2/msvc2022_64/bin/Qt6Widgetsd.dll;C:/Qt/6.10.2/msvc2022_64/bin/Qt6Multimediad.dll;C:/Qt/6.10.2/msvc2022_64/bin/Qt6Networkd.dll;C:/Qt/6.10.2/msvc2022_64/bin/Qt6Concurrentd.dll;C:/Qt/6.10.2/msvc2022_64/bin/Qt6Guid.dll;C:/Qt/6.10.2/msvc2022_64/bin/Qt6Cored.dll)

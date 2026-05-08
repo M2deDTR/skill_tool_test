@@ -1,0 +1,79 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-bd783275d6a81793f208.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "EndField_Skill_Inspector",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "EndField_Skill_Inspector::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-EndField_Skill_Inspector-Debug-677e165297224a523ea7.json",
+					"name" : "EndField_Skill_Inspector",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "EndField_Skill_Inspector_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-EndField_Skill_Inspector_autogen-Debug-f4314c877247575c6d1e.json",
+					"name" : "EndField_Skill_Inspector_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "EndField_Skill_Inspector_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-EndField_Skill_Inspector_autogen_timestamp_deps-Debug-a94c9ef22c55eff2c1c8.json",
+					"name" : "EndField_Skill_Inspector_autogen_timestamp_deps",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/tangz/Desktop/EndField_Skill_Inspector/build/Desktop_Qt_6_10_2_MSVC2022_64bit-Debug",
+		"source" : "C:/Users/tangz/Desktop/EndField_Skill_Inspector"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 7
+	}
+}
