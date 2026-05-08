@@ -104,6 +104,7 @@ void runDebug(const std::string& videoPath, Endfield::SkillDetector& det) {
 // ============================================================
 //  main
 // ============================================================
+<<<<<<< HEAD
 int main(int argc, char* argv[])
 {
     // 用法：
@@ -112,12 +113,23 @@ int main(int argc, char* argv[])
     std::string mode    = argc > 1 ? argv[1] : "batch";
     std::string inFile  = argc > 2 ? argv[2] : "battle.mp4";
     std::string outFile = argc > 3 ? argv[3] : "skill_events.csv";
+=======
+int main(int argc, char* argv[]) {
+    // 用法：
+    //   skill_detector calibrate  screenshot.png   （校准模式）
+    //   skill_detector debug      battle.mp4        （调试预览）
+    //   skill_detector batch      battle.mp4        （批量处理）
+
+    std::string mode   = argc > 1 ? argv[1] : "batch";
+    std::string inFile = argc > 2 ? argv[2] : "battle.mp4";
+>>>>>>> origin/main
 
     if (mode == "calibrate") {
         runCalibrate(inFile);
         return 0;
     }
 
+<<<<<<< HEAD
     Endfield::Config cfg;
 
     cfg.fps = 60.0;
@@ -137,10 +149,35 @@ int main(int argc, char* argv[])
 
     detector.onSkillRelease([](const Endfield::SkillEvent& e) {
 
+=======
+    // 配置检测器
+    Endfield::Config cfg;
+    cfg.fps            = 60.0;
+    cfg.glowThreshold  = 0.72f;  // 图标亮度阈值，可调
+    cfg.glowDiffMin    = 0.08f;  // 最亮与次亮的最小差，可调
+    cfg.cooldownFrames = 15;     // 
+    cfg.saveSnapshots  = true;
+    cfg.debugDraw      = true;
+    cfg.historyFrames = 4;
+    
+    Endfield::SkillDetector detector(cfg);
+    detector.setEnergyBar(ENERGY_BAR);
+    for (auto& icon : SKILL_ICONS)
+        detector.addSkillIcon(icon);
+
+    // 注册回调
+    detector.onSkillRelease([](const Endfield::SkillEvent& e) {
+        std::cout << ">>> 战技" << e.skillIndex
+                  << " @" << std::fixed << std::setprecision(2)
+                  << e.timestamp << "s  "
+                  << "能量格 " << e.energyBefore << "->" << e.energyAfter
+                  << "\n";
+>>>>>>> origin/main
     });
 
     if (mode == "debug") {
         runDebug(inFile, detector);
+<<<<<<< HEAD
     }
     else {
         detector.processVideo(inFile);
@@ -149,3 +186,12 @@ int main(int argc, char* argv[])
 
     return 0;
 }
+=======
+    } else {
+        detector.processVideo(inFile);
+        detector.exportCSV("skill_events.csv");
+    }
+
+    return 0;
+}
+>>>>>>> origin/main

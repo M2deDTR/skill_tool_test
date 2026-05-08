@@ -57,8 +57,13 @@ using SkillCallback = std::function<void(const SkillEvent&)>;
 struct Config {
     double fps            = 60.0;
     int    historyFrames  = 4;     // 能量格历史窗口
+<<<<<<< HEAD
     float  glowChangeThreshold = 0.10f; // 亮度变化阈值（前后帧差值）
     float  glowChangeMin       = 0.05f; // 变化量与次大变化量的最小差
+=======
+    float  glowThreshold  = 0.72f; // 图标"亮"的亮度阈值
+    float  glowDiffMin    = 0.08f; // 最亮与次亮的最小差，防误判
+>>>>>>> origin/main
     int    cooldownFrames = 20;    // 释放后冷却帧数（防重复触发）
     bool   debugDraw      = false;
     bool   saveSnapshots  = false;
@@ -113,8 +118,11 @@ private:
 
     void fireCallbacks(const SkillEvent& evt);
     void saveSnapshot(const cv::Mat& frame, const SkillEvent& evt) const;
+<<<<<<< HEAD
     
     std::deque<float> glowHistory_[4];  // 每个图标的亮度历史
+=======
+>>>>>>> origin/main
 };
 
 } // namespace Endfield
