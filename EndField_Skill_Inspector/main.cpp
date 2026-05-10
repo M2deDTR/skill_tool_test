@@ -1,79 +1,77 @@
 #include "mainwindow.h"
-
 #include <QApplication>
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    a.setStyleSheet(R"(
-QWidget {
-    background-color: #14161c;
-    color: #e6e6e6;
-    font-size: 13px;
-}
 
+    a.setStyleSheet(R"(
+/* 输入框 */
 QLineEdit {
-    background-color: #1e222b;
-    border: 1px solid #2c3442;
+    background-color: rgba(0,0,0,0);  /* 背景透明 */
+    border: 1px solid black;          /* 黑色边框固定 */
     padding: 6px;
     border-radius: 6px;
-    color: #ffffff;
+    color: black;                     /* 文字黑色 */
 }
-
 QLineEdit:focus {
-    border: 1px solid #4a90e2;
+    border: 1px solid black;          /* 焦点仍黑色 */
+}
+QLineEdit:hover {
+    background-color: rgba(255,0,0,0.2); /* 半透明红色高亮 */
 }
 
+/* 文本输出框 */
+QTextEdit {
+    background-color: rgba(0,0,0,0);  /* 背景透明 */
+    border: 1px solid black;
+    border-radius: 6px;
+    color: black;                     /* 文字黑色 */
+}
+/* QTextEdit 悬停不变红，保持透明 */
+
+/* 按钮 */
 QPushButton {
-    background-color: #2a2f3a;
-    border: 1px solid #3a4252;
+    background-color: rgba(0,0,0,0);
+    border: 1px solid black;
     padding: 7px 12px;
     border-radius: 6px;
+    color: black;
 }
-
 QPushButton:hover {
-    background-color: #3a4252;
+    background-color: rgba(255,0,0,0.2); /* 半透明红色高亮 */
 }
-
 QPushButton:pressed {
-    background-color: #4a5670;
+    background-color: rgba(255,0,0,0.3);
 }
 
-QTextEdit {
-    background-color: #10131a;
-    border: 1px solid #2a3140;
-    border-radius: 6px;
-}
-
+/* 分组框 */
 QGroupBox {
-    border: 1px solid #2a3140;
+    border: 1px solid black;
     margin-top: 10px;
     border-radius: 6px;
     padding: 8px;
+    background-color: rgba(0,0,0,0);
+}
+QGroupBox:hover {
+    background-color: rgba(255,0,0,0.2);
 }
 
-QGroupBox::title {
-    subcontrol-origin: margin;
-    left: 10px;
-    padding: 0 5px;
-}
-
+/* 滚动条 */
 QScrollBar:vertical {
-    background: #1a1f29;
+    background: rgba(0,0,0,0);
     width: 10px;
 }
-
 QScrollBar::handle:vertical {
-    background: #3a4252;
+    background: rgba(0,0,0,0.3);
     border-radius: 4px;
 }
-
 QScrollBar::handle:vertical:hover {
-    background: #4a5670;
+    background: rgba(255,0,0,0.3);
 }
 )");
+
     MainWindow w;
     w.show();
     return a.exec();
 }
-

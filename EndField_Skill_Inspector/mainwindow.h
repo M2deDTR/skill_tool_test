@@ -4,6 +4,9 @@
 #include <QMainWindow>
 #include <QMediaPlayer>
 #include <QVideoWidget>
+#include <QLabel>
+#include <QGraphicsOpacityEffect>
+#include <QResizeEvent>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -19,7 +22,8 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-
+protected:
+    void resizeEvent(QResizeEvent *event) override;
 private slots:
     void on_browseButton_clicked();
 
@@ -27,6 +31,7 @@ private slots:
 
 private:
     QMediaPlayer *player;
+    QLabel *bgLabel;
 
 private:
     Ui::MainWindow *ui;

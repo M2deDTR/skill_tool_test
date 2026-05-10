@@ -81,11 +81,8 @@ void SkillDetector::measureIconGlows(const cv::Mat& frame,
 //   条件：最亮值 > glowThreshold 且 与次亮的差 > glowDiffMin
 // ----------------------------------------------------------
 int SkillDetector::findBrightestIcon(const float glow[4]) const {
-<<<<<<< HEAD
     return -1;
     /*
-=======
->>>>>>> origin/main
     int   maxIdx  = 0;
     float maxVal  = glow[0];
     float secVal  = -1.f;
@@ -103,20 +100,14 @@ int SkillDetector::findBrightestIcon(const float glow[4]) const {
     if (maxVal < cfg_.glowThreshold)         return -1;
     if (maxVal - secVal < cfg_.glowDiffMin)  return -1;
     return maxIdx;
-<<<<<<< HEAD
     */
-=======
->>>>>>> origin/main
 }
 
 // ----------------------------------------------------------
 // 处理单帧
 // ----------------------------------------------------------
-<<<<<<< HEAD
 // ----------------------------------------------------------
 // ----------------------------------------------------------
-=======
->>>>>>> origin/main
 bool SkillDetector::processFrame(const cv::Mat& frame, int frameIdx) {
     if (frame.empty()) return false;
 
@@ -126,7 +117,6 @@ bool SkillDetector::processFrame(const cv::Mat& frame, int frameIdx) {
     ++currentFrame_;
 
     // 冷却倒计时
-<<<<<<< HEAD
     if (cooldownLeft_ > 0) { 
         --cooldownLeft_; 
         // 冷却期间仍然要更新亮度历史
@@ -149,12 +139,6 @@ bool SkillDetector::processFrame(const cv::Mat& frame, int frameIdx) {
         if ((int)glowHistory_[i].size() > 8) glowHistory_[i].pop_front();
     }
     
-=======
-    if (cooldownLeft_ > 0) { --cooldownLeft_; return false; }
-
-    int energy = measureEnergySegments(frame);
-    
->>>>>>> origin/main
     // 填充历史
     energyHistory_.push_back(energy);
     if ((int)energyHistory_.size() > cfg_.historyFrames)
@@ -179,7 +163,6 @@ bool SkillDetector::processFrame(const cv::Mat& frame, int frameIdx) {
     // 要求前3帧能量都稳定在同一格数，突然才减少
     if ((int)energyHistory_.size() >= 3) {
         int olderEnergy = energyHistory_[energyHistory_.size() - 3];
-<<<<<<< HEAD
         if (olderEnergy != prevEnergy) return false;
     }
 
@@ -236,23 +219,6 @@ bool SkillDetector::processFrame(const cv::Mat& frame, int frameIdx) {
 
     SkillEvent evt;
     evt.skillIndex   = brightIdx + 1;
-=======
-        if (olderEnergy != prevEnergy) return false; // 之前就在变化，不是瞬间突降
-    }
-    // 能量格减少了 → 检测哪个图标最亮
-    float glow[4];
-    measureIconGlows(frame, glow);
-    int brightIdx = findBrightestIcon(glow);
-
-    if (brightIdx < 0) {
-        // 图标无明显最亮，但能量确实减少了
-        // 仍然记录事件，skillIndex 设为 0（未能确定）
-        brightIdx = -1;
-    }
-
-    SkillEvent evt;
-    evt.skillIndex   = brightIdx + 1; // 0 表示未确定
->>>>>>> origin/main
     evt.frameIndex   = frameIdx;
     evt.timestamp    = frameIdx / cfg_.fps;
     evt.energyBefore = prevEnergy;
@@ -263,28 +229,13 @@ bool SkillDetector::processFrame(const cv::Mat& frame, int frameIdx) {
     fireCallbacks(evt);
     cooldownLeft_ = cfg_.cooldownFrames;
 
-<<<<<<< HEAD
     std::cout << std::fixed << std::setprecision(2)
               << evt.timestamp << "s 战技" << evt.skillIndex << "\n";
-=======
-    std::cout << "[检测] 战技" << evt.skillIndex
-              << "  帧=" << evt.frameIndex
-              << "  时间=" << std::fixed << std::setprecision(2)
-              << evt.timestamp << "s"
-              << "  能量格 " << evt.energyBefore << "->" << evt.energyAfter
-              << "  图标亮度["
-              << glow[0] << ", " << glow[1] << ", "
-              << glow[2] << ", " << glow[3] << "]\n";
->>>>>>> origin/main
 
     if (cfg_.saveSnapshots) saveSnapshot(frame, evt);
     return true;
 }
 
-<<<<<<< HEAD
-=======
-// ----------------------------------------------------------
->>>>>>> origin/main
 // 批量处理视频
 // ----------------------------------------------------------
 void SkillDetector::processVideo(const std::string& videoPath) {
@@ -306,12 +257,6 @@ void SkillDetector::processVideo(const std::string& videoPath) {
     int idx = 0;
     while (cap.read(frame)) {
         processFrame(frame, idx++);
-<<<<<<< HEAD
-
-=======
-        if (idx % 300 == 0)
-            std::cout << "[进度] " << idx << "/" << total << "\n";
->>>>>>> origin/main
     }
 
     std::cout << "[完成] 共检测到 " << events_.size() << " 次战技释放\n";
